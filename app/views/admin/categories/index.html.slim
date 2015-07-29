@@ -1,0 +1,28 @@
+h3 Категорії
+
+table
+  thead
+    tr
+      th Ресторан
+      th Назва
+      th Позиція
+      th
+      th
+      th
+  tbody
+    - @categories.each do |category|
+      tr
+        - if category.common?
+          td Спільна
+        - else
+          td
+            = image_tag category.restaurant.try(&:logo)
+        td = category.name
+        td = category.position
+        td = link_to 'O', admin_category_path(category)
+        td = link_to '/', edit_admin_category_path(category)
+        td = link_to 'X', admin_category_path(category), data: {:confirm => 'Are you sure?'}, :method => :delete
+
+br
+
+= link_to 'Добавити новий', new_admin_category_path

@@ -1,0 +1,53 @@
+#BasketModal.reveal-modal data-reveal=""
+  .basket-modal-wrap
+    .modal-header.blue-background-pattern.text-center
+      h2
+        |Що будемо?
+      a.close-reveal-modal
+    .modal-content
+      - count_products = get_count_products
+      .row
+        .columns
+          ul
+            li
+              .ico-wrap
+                .ico
+                  = embedded_svg "Yizhku-yizhak mini icon-color.svg", class: 'basket-ico-status'
+              .title
+                b Що будемо?
+            li.passive
+              .ico-wrap
+                .ico
+                  = embedded_svg "Yizhku-yizhak mini icon-color.svg", class: 'basket-ico-status'
+                  = embedded_svg "Yizhku-yizhak mini icon-color.svg", class: 'basket-ico-status'
+              .title
+                b Куди доставляємо?
+            li.passive
+              .ico-wrap
+                .ico
+                  = embedded_svg "Yizhku-yizhak mini icon-color.svg", class: 'basket-ico-status'
+                  = embedded_svg "Yizhku-yizhak mini icon-color.svg", class: 'basket-ico-status'
+                  = embedded_svg "Yizhku-yizhak mini icon-color.svg", class: 'basket-ico-status'
+              .title
+                b Все вірно?
+            .clearfix
+
+      .cart-items-wrap
+        - current_cart.line_items.each do |li|
+          =render partial: "partials/one_item_cart", locals: {li: li}
+      .cart-rez-wrap
+        .row
+          .columns.large-7.medium-7.right
+            .basket-total-price-wrap
+
+
+    .modal-footer.text-center
+      .number-order-wrap.box-shadow-restourant
+        .number-order-inner
+          .number-order
+            strong
+              |№
+              br
+              =current_cart.id
+
+      a.secondary data-reveal-id="BasketSecondStepModal" href="#" Далі...

@@ -1,0 +1,76 @@
+#BasketSecondStepModal.reveal-modal data-reveal=""
+  .basket-modal-wrap
+    .modal-header.blue-background-pattern.text-center
+      h2 Куди доставляємо?
+      a.close-reveal-modal
+    .modal-content
+      .row
+        .columns
+          ul
+            li.passive-prev-step
+              .ico-wrap
+                .ico
+                  = embedded_svg "Yizhku-yizhak mini icon-color.svg", class: 'basket-ico-status'
+              .title
+                b Що будемо?
+            li
+              .ico-wrap
+                .ico
+                  = embedded_svg "Yizhku-yizhak mini icon-color.svg", class: 'basket-ico-status'
+                  = embedded_svg "Yizhku-yizhak mini icon-color.svg", class: 'basket-ico-status'
+              .title
+                b Куди доставляємо?
+            li.passive
+              .ico-wrap
+                .ico
+                  = embedded_svg "Yizhku-yizhak mini icon-color.svg", class: 'basket-ico-status'
+                  = embedded_svg "Yizhku-yizhak mini icon-color.svg", class: 'basket-ico-status'
+                  = embedded_svg "Yizhku-yizhak mini icon-color.svg", class: 'basket-ico-status'
+              .title
+                b Все вірно?
+            .clearfix
+      form#basket-information-form action="/" method="POST"
+        .modal-content
+          .row
+            input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>"
+            .columns.large-6.medium-6
+              .input
+                label for="co_name"
+                  |Адреса доставки*
+                input#co_name type="text" name="street_address" required=""
+              .input
+                label for="co_phone"
+                  |Контактний телефон*
+                input#co_phone type="text" name="phone" required=""  minlength="10" maxlength="11"
+              .input
+                label for="co-card-code"
+                  |Код клубної карти «Їжа.ків»
+                input#co-card-code type="text" name="card_code"
+            .columns.large-6.medium-6
+              .input
+                label for="co-comment"
+                  |Додаткові примітки
+                textarea#co-comment type="text" name="comment"
+          .row
+            .columns.large-6.medium-6
+              .row
+                .columns
+                  a.blue-link.clear-form Очистити поля форми
+
+              .row
+                .columns.large-8.large-offset-4.medium-8.medium-offset-4.no-padding-left
+                  a.blue-link.forward-step-link data-reveal-id="BasketModal" href="#" < Що будемо?
+            .columns.large-6.medium-6
+              p.modal-note * поля обов’язкові для заповнення
+
+    .modal-footer.text-center
+      .check-validate-status-button
+      .number-order-wrap.box-shadow-restourant
+        .number-order-inner
+          .number-order
+            strong
+              |№
+              br
+              =current_cart.id
+
+      a.secondary.cart-go-to-finish-step data-reveal-id="BasketFinishStepModal" href="#" Далі...

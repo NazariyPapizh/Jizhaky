@@ -1,0 +1,52 @@
+.login-window-wrap.registration-window-wrap.brown-pattern-background
+  .row
+    .columns.large-7.large-centered
+      .modal-window-wrap.admin-window-shadow
+        .modal-header.blue-background-pattern.text-center
+          h2 Створити акаунт
+
+
+        = simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+          .modal-content
+            .columns
+              = devise_error_messages!
+              h3.title.text-center Особиста інформація
+              = f.input :first_name, autofocus: true, label: "Ім'я", input_html: {placeholder: "Ваше ім'я"}
+              = f.input :card, label: "Номер картки клубу", input_html: {placeholder: 'Номер картки клубу'}
+              /= f.input :last_name, label: "Прізвище", input_html: {placeholder: 'Ваше прізвище'}
+              = f.input :phone, label: "Номер телефону", input_html: {placeholder: 'Номер телефону'}
+              = f.input :email, label: "Електронна скринька*", input_html: {placeholder: 'foodorder@test.com'}
+
+              = f.input :subscribe_to, label: "Підписатись на розсилку"
+
+              - if f.object.password_required?
+                = f.input :password, label: "Пароль", hint: false, error_html: { id: 'password_error'}, input_html: {placeholder: "password"}
+                = f.input :password_confirmation, label: "Підтвердити пароль", input_html: {placeholder: "password"}
+              .row
+                .columns.large-6
+                  =link_to "< Повернутись", user_session_path
+                .columns.large-6
+                  p * поля обов’язкові для заповнення
+
+
+              /.field
+              /  = f.label :password
+              /  - if @validatable
+              /  em
+              /    |(
+              /    = @minimum_password_length
+              /    |characters minimum)
+              /  br
+              /  = f.password_field :password, autocomplete: "off"
+              /
+              /.field
+              /  = f.label :password_confirmation
+              /  br
+              /  = f.password_field :password_confirmation, autocomplete: "off"
+              .clearfix
+            .clearfix
+
+          .modal-footer.text-center
+            = f.submit "Підтвердити"
+
+        /= render "devise/shared/links"

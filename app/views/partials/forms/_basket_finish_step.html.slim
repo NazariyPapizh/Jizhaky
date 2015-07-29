@@ -1,0 +1,84 @@
+#BasketFinishStepModal.reveal-modal data-reveal=""
+  .basket-modal-wrap
+    .modal-header.blue-background-pattern.text-center
+      h2 Все вірно?
+      a.close-reveal-modal
+    .modal-content
+      .order-products-status-wrap
+
+      - count_products = get_count_products
+      .row
+        .columns
+          ul
+            li.passive-prev-step
+              .ico-wrap
+                .ico
+                  = embedded_svg "Yizhku-yizhak mini icon-color.svg", class: 'basket-ico-status'
+              .title
+                b Що будемо?
+            li.passive-prev-step
+              .ico-wrap
+                .ico
+                  = embedded_svg "Yizhku-yizhak mini icon-color.svg", class: 'basket-ico-status'
+                  = embedded_svg "Yizhku-yizhak mini icon-color.svg", class: 'basket-ico-status'
+              .title
+                b Куди доставляємо?
+            li
+              .ico-wrap
+                .ico
+                  = embedded_svg "Yizhku-yizhak mini icon-color.svg", class: 'basket-ico-status'
+                  = embedded_svg "Yizhku-yizhak mini icon-color.svg", class: 'basket-ico-status'
+                  = embedded_svg "Yizhku-yizhak mini icon-color.svg", class: 'basket-ico-status'
+              .title
+                b Все вірно?
+
+            .clearfix
+
+      .row
+        .columns.large-5.medium-5
+          .delivery-address-wrap.fs-info-block-wrap
+            .delivery-address-inner
+              h3 Адреса доставки:
+              .row.da-one-wrap
+                .columns.large-2.medium-2
+                  =embedded_svg "Yizhaku-location.svg"
+                .columns.large-10.medium-10
+                  p.da-address
+              .row.da-one-wrap
+                .columns.large-2.medium-2
+                  =embedded_svg "Yizhaku-phone.svg"
+                .columns.large-10.medium-10
+                  p.da-phone
+              .row.da-one-wrap
+                .columns.large-2.medium-2
+                  =embedded_svg "Yizhaku-card.svg"
+                .columns.large-10.medium-10
+                  p.da-code
+            .delivery-address-inner
+              h3 Ваші примітки:
+              .your-notes-wrap
+                p.da-comment
+
+        .columns.large-7.medium-7
+          .ordered-products-wrap.fs-info-block-wrap
+            h3 Замовлений товар:
+            .ordered-product-items-wrap
+          .cart-rez-wrap
+            .basket-total-price-wrap
+    .row
+      .columns.large-offset-2.medium-offset-2.no-padding-left
+        a.blue-link.forward-step-link data-reveal-id="BasketSecondStepModal" href="#" < Куди доставляємо?
+    .modal-footer.text-center
+      .number-order-wrap.box-shadow-restourant
+        .number-order-inner
+          .number-order
+            strong
+              |№
+              br
+              =current_cart.id
+      form.order-product action=order_product_path
+        input type="hidden" name="address" value=""
+        input type="hidden" name="phone" value=""
+        input type="hidden" name="card" value=""
+        input type="hidden" name="comment" value=""
+        input type="submit" value="Так, беру!"

@@ -1,0 +1,26 @@
+.good-people-say-wrap.proposition-block-wrap
+  .header
+    .header-inner
+      .title
+        h3 Добрі люди кажуть
+  .row.text-center
+    -if @reviews && @reviews.any?
+      -@reviews.each_with_index do |r, i|
+        - h = { a: "5", b: "8"}
+        .columns.large-2.medium-2.small-3.gps-header class=("end" if @reviews.count-1 == i) *(h) class=("active" if i == 0)
+          .pictures-wrap
+            .pbi style="background: url('#{r.image.url(:avatar)}')no-repeat center center;"
+          h4 =r.name
+
+  .row.text-center
+    .columns.large-2.large-centered.medium-2.medium-centered
+      b data-content='“'
+  .row.text-center
+    -if @reviews && @reviews.any?
+      -@reviews.each_with_index do |r, i|
+        .columns.large-8.large-centered.medium-8.medium-centered.gps-tab  class=("active" if i == 0)
+          =raw r.description
+  .row.text-center
+    .columns
+      .reviews-wrap
+        =link_to "Залишити відгук", reviews_path

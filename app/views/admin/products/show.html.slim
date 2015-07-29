@@ -1,0 +1,28 @@
+h2 Продукт
+p
+  strong Name:
+  = @product.name
+p
+  strong Slug:
+  = @product.slug
+p
+  strong Avatar:
+  = image_tag @product.image.url(:large)
+
+p
+  strong Description:
+  = raw @product.description
+/p
+/  strong About:
+/  = @restaurant.about
+/p
+/  strong Position:
+/  = @restaurant.position
+
+.row.text-center
+  .columns.large-4.medium-4.small-4
+    = link_to 'Редагувати', edit_admin_product_path(@product)
+  .columns.large-4.medium-4.small-4
+    = link_to 'Назад', admin_products_path
+  .columns.large-4.medium-4.small-4
+    = link_to 'Новий продукт', new_admin_product_path

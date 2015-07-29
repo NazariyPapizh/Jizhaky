@@ -1,0 +1,257 @@
+.business_lunch_wrap.proposition-block-wrap
+  .header
+    .header-inner
+      .title
+        h3 Бізнес-ланч
+  .row
+    .columns
+      #business_lunch2
+        - business_lunch
+        .row.business_lunch_item
+          - if @products_for_monday.any?
+            - @products_for_monday.each_with_index do |p, i|
+              .columns.large-6.medium-6
+                .one-product-wrap.yellow
+                  .bi style="background: url('#{p.image.url(:main)}')no-repeat center center;"
+                  .information-block-wrap
+                    -success = ''
+                    -current_cart.line_items.each do |item|
+                      - if item.product_id == p.id
+                        - success = 'y-success'
+                    .price-wrap.text-center class=success
+                      .price
+                        strong = p.price.round
+                        p грн
+                    .information-block
+                      .name-wrap
+                        h2 =p.name
+                      .description-wrap
+                        =raw p.description
+                        p
+                          - if !p.size.blank?
+                            span
+                              =p.size
+                              |&nbsp;мл&nbsp;&nbsp;&nbsp;
+
+                          - if !p.weight.blank?
+                            span
+                              =p.weight.round()
+                              |&nbsp;г&nbsp;&nbsp;&nbsp;
+
+                          - if !p.diameter.blank?
+                            span
+                              |Ø&nbsp;
+                              =p.diameter
+                              |&nbsp;см&nbsp;&nbsp;&nbsp;
+
+                      form.order-form action=admin_line_items_path
+                        input type="hidden" name="cart_id" value=current_cart.id
+                        input type="hidden" name="product_id" value="#{p.id}"
+                        .round-input
+                          .input.input-count
+                            .ic-button.input-count-up
+                            .ic-button.input-count-down
+                            .input-inner
+                              input type="number" name="quantity" value="1"
+
+                        input type="hidden" name="restaurant_id" value="1"
+                        button type="submit" name="order-product"  Замовити
+
+        .row.business_lunch_item
+          - if @products_for_tuesday.any?
+            - @products_for_tuesday.each_with_index do |p, i|
+              .columns.large-6.medium-6
+                .one-product-wrap.brown
+                  .bi style="background: url('#{p.image.url(:main)}')no-repeat center center;"
+                  .information-block-wrap
+                    -success = ''
+                    -current_cart.line_items.each do |item|
+                      - if item.product_id == p.id
+                        - success = 'y-success'
+                    .price-wrap.text-center class=success
+                      .price
+                        strong = p.price.round
+                        p грн
+                    .information-block
+                      .name-wrap
+                        h2 =p.name
+                      .description-wrap
+                        =raw p.description
+                        p
+                          - if !p.size.blank?
+                            span
+                              =p.size
+                              |&nbsp;мл&nbsp;&nbsp;&nbsp;
+
+                          - if !p.weight.blank?
+                            span
+                              =p.weight.round()
+                              |&nbsp;г&nbsp;&nbsp;&nbsp;
+
+                          - if !p.diameter.blank?
+                            span
+                              |Ø&nbsp;
+                              =p.diameter
+                              |&nbsp;см&nbsp;&nbsp;&nbsp;
+                      form.order-form action=admin_line_items_path
+                        input type="hidden" name="cart_id" value=current_cart.id
+                        input type="hidden" name="product_id" value="#{p.id}"
+                        .round-input
+                          .input.input-count
+                            .ic-button.input-count-up
+                            .ic-button.input-count-down
+                            .input-inner
+                              input type="number" name="quantity" value="1"
+
+                        input type="hidden" name="restaurant_id" value="1"
+                        button type="submit" name="order-product"  Замовити
+
+        .row.business_lunch_item
+          - if @products_for_wednesday.any?
+            - @products_for_wednesday.each_with_index do |p, i|
+              .columns.large-6.medium-6
+                .one-product-wrap.yellow-green
+                  .bi style="background: url('#{p.image.url(:main)}')no-repeat center center;"
+                  .information-block-wrap
+                    -success = ''
+                    -current_cart.line_items.each do |item|
+                      - if item.product_id == p.id
+                        - success = 'y-success'
+                    .price-wrap.text-center class=success
+                      .price
+                        strong = p.price.round
+                        p грн
+                    .information-block
+                      .name-wrap
+                        h2 =p.name
+                      .description-wrap
+                        =raw p.description
+                        p
+                          - if !p.size.blank?
+                            span
+                              =p.size
+                              |&nbsp;мл&nbsp;&nbsp;&nbsp;
+
+                          - if !p.weight.blank?
+                            span
+                              =p.weight.round()
+                              |&nbsp;г&nbsp;&nbsp;&nbsp;
+
+                          - if !p.diameter.blank?
+                            span
+                              |Ø&nbsp;
+                              =p.diameter
+                              |&nbsp;см&nbsp;&nbsp;&nbsp;
+                      form.order-form action=admin_line_items_path
+                        input type="hidden" name="cart_id" value=current_cart.id
+                        input type="hidden" name="product_id" value="#{p.id}"
+                        .round-input
+                          .input.input-count
+                            .ic-button.input-count-up
+                            .ic-button.input-count-down
+                            .input-inner
+                              input type="number" name="quantity" value="1"
+
+                        input type="hidden" name="restaurant_id" value="1"
+                        button type="submit" name="order-product"  Замовити
+
+        .row.business_lunch_item
+          - if @products_for_thursday.any?
+            - @products_for_thursday.each_with_index do |p, i|
+              .columns.large-6.medium-6
+                .one-product-wrap.blue
+                  .bi style="background: url('#{p.image.url(:main)}')no-repeat center center;"
+                  .information-block-wrap
+                    -success = ''
+                    -current_cart.line_items.each do |item|
+                      - if item.product_id == p.id
+                        - success = 'y-success'
+                    .price-wrap.text-center class=success
+                      .price
+                        strong = p.price.round
+                        p грн
+                    .information-block
+                      .name-wrap
+                        h2 =p.name
+                      .description-wrap
+                        =raw p.description
+                        p
+                          - if !p.size.blank?
+                            span
+                              =p.size
+                              |&nbsp;мл&nbsp;&nbsp;&nbsp;
+
+                          - if !p.weight.blank?
+                            span
+                              =p.weight.round()
+                              |&nbsp;г&nbsp;&nbsp;&nbsp;
+
+                          - if !p.diameter.blank?
+                            span
+                              |Ø&nbsp;
+                              =p.diameter
+                              |&nbsp;см&nbsp;&nbsp;&nbsp;
+                      form.order-form action=admin_line_items_path
+                        input type="hidden" name="cart_id" value=current_cart.id
+                        input type="hidden" name="product_id" value="#{p.id}"
+                        .round-input
+                          .input.input-count
+                            .ic-button.input-count-up
+                            .ic-button.input-count-down
+                            .input-inner
+                              input type="number" name="quantity" value="1"
+
+                        input type="hidden" name="restaurant_id" value="1"
+                        button type="submit" name="order-product"  Замовити
+
+        .row.business_lunch_item
+          - if @products_for_friday.any?
+            - @products_for_friday.each_with_index do |p, i|
+              .columns.large-6.medium-6
+                .one-product-wrap.red
+                  .bi style="background: url('#{p.image.url(:main)}')no-repeat center center;"
+                  .information-block-wrap
+                    -success = ''
+                    -current_cart.line_items.each do |item|
+                      - if item.product_id == p.id
+                        - success = 'y-success'
+                    .price-wrap.text-center class=success
+                      .price
+                        strong = p.price.round
+                        p грн
+                    .information-block
+                      .name-wrap
+                        h2 =p.name
+                      .description-wrap
+                        =raw p.description
+                        p
+                          - if !p.size.blank?
+                            span
+                              =p.size
+                              |&nbsp;мл&nbsp;&nbsp;&nbsp;
+
+                          - if !p.weight.blank?
+                            span
+                              =p.weight.round()
+                              |&nbsp;г&nbsp;&nbsp;&nbsp;
+
+                          - if !p.diameter.blank?
+                            span
+                              |Ø&nbsp;
+                              =p.diameter
+                              |&nbsp;см&nbsp;&nbsp;&nbsp;
+                      form.order-form action=admin_line_items_path
+                        input type="hidden" name="cart_id" value=current_cart.id
+                        input type="hidden" name="product_id" value="#{p.id}"
+                        .round-input
+                          .input.input-count
+                            .ic-button.input-count-up
+                            .ic-button.input-count-down
+                            .input-inner
+                              input type="number" name="quantity" value="1"
+
+                        input type="hidden" name="restaurant_id" value="1"
+                        button type="submit" name="order-product"  Замовити
+
+
+

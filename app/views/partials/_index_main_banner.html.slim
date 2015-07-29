@@ -1,0 +1,77 @@
+.index-main-banner-wrap.blue-background-pattern
+  .index-main-banner
+    -if @main_banners.any?
+      ul#index-products-banner.bxslider
+        - @main_banners.each_with_index do |main_banner, index|
+          li
+            /.bi#background-scene style="background: url('#{main_banner.layer_background.url(:large)}')no-repeat center center;"
+            /
+            /.bi#layer-one style="background: url('#{main_banner.layer_1.url(:large)}')no-repeat center center;"
+            /
+            /.bi#layer-two style="background: url('#{main_banner.layer_2.url(:large)}')no-repeat center center;"
+            /
+            /.bi#layer-three style="background: url('#{main_banner.layer_3.url(:large)}')no-repeat center center;"
+            .scene id=("scene#{index+1}") data-calibrate-x="false" data-calibrate-y="true" data-invert-x="false" data-invert-y="true" data-limit-y="8"
+              .layer data-depth="0.00"
+                .bi-wrap.background
+                  .bi style="background: url('#{main_banner.layer_background.url(:large)}')no-repeat center center;"
+                  /=image_tag asset_path("banner-1-layer1.jpg")
+
+              .layer data-depth="0.60"
+                .bi-wrap.kurama
+                  /=image_tag asset_path("banner-1-layer2.png")
+                  .bi style="background: url('#{main_banner.layer_1.url(:large)}')no-repeat center center;"
+                  /=image_tag main_banner.layer_1.url(:large)
+
+              .layer data-depth="0.40" data-invert-y="false"
+                .bi-wrap.landscape
+                  /=image_tag asset_path("banner-1-layer3.png")
+                  .bi style="background: url('#{main_banner.layer_2.url(:large)}')no-repeat center center;"
+                  /=image_tag main_banner.layer_2.url(:large)
+
+              .layer data-depth="0.80" data-scalar-x="1"
+                .bi-wrap.grass
+                  /=image_tag asset_path("banner-1-layer4.png")
+                  .bi style="background: url('#{main_banner.layer_3.url(:large)}')no-repeat center center;"
+                  /=image_tag main_banner.layer_3.url(:large)
+            .about-banner-wrap
+              .row
+                .columns.large-6.medium-6.right
+                  .ab-inner
+                    .ab
+                      .ab-title
+                        = raw main_banner.title
+                      .ab-description
+                        = raw main_banner.description
+        /  - restorans.each do |r|
+        /    -if r.slug == 'barbarus'
+        /      - restoran_color = 'yellow-green'
+        /
+        /    -elsif r.slug == 'baba-franya'
+        /      - restoran_color = 'blue'
+        /
+        /    -elsif r.slug == 'bruno'
+        /      - restoran_color = 'brown'
+        /
+        /    - r.categories.each do |c|
+        /  -banner.products.each_with_index  do |p, i|
+        /    - restoran_color = ""
+        /    li
+        /      .one-product-wrap class="#{restoran_color}"
+        /        .bi style="background: url('#{p.image.url(:large)}')no-repeat center center;"
+        /        .information-block-wrap
+        /          .price-wrap.text-center
+        /            .price
+        /              strong = p.price.round
+        /              p грн
+        /          .information-block
+        /            .row
+        /              .columns.large-8.medium-8.small-8.end
+        /                .name-wrap
+        /                  h2 =p.name
+        /                .description-wrap
+        /                  p =raw p.description
+        /            form action=""
+        /              .input
+        /                input type="number" value="1"
+        /              button type="submit" name="order-product" value="true" Замовити

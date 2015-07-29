@@ -1,0 +1,55 @@
+.row
+  .columns
+    -if notice
+      p#notice = notice
+.header-wrap
+  .row
+    .columns.large-2.medium-2.small-5
+      .logo-wrap
+        .logo-inner
+          a href=root_path
+            = image_tag ("Yizhaku-logo.png")
+    .columns.large-2.large-offset-2.medium-3.medium-offset-2.hide-for-small-only
+      .time-working-wrap
+        .time-working-inner
+          b
+            |12
+            sup
+              |:00
+            | - 22
+            sup
+              |:00
+          p Клуб доставки Їжі
+    .columns.large-3.large-offset-2.medium-3.hide-for-small-only
+      .call-order-wrap
+        .call-order-inner
+          b
+            a href="tel:+380970970505" rel="nofollow"
+              |+38 (097) 097-05-05
+          .clearfix
+          a data-reveal-id="CallOrderModal" href="#" замовити дзвінок
+    .columns.small-2.small-offset-5.show-for-small-only.no-padding-right
+      .call-order-for-mobile-wrap
+        .call-order-for-mobile-inner
+          a data-reveal-id="CallOrderModal"
+            = embedded_svg "Yizhaku-call.svg"
+    .columns.large-2.large-offset-1.medium-3.small-5
+      .basket-part-wrap
+        .login-wrap
+          .login-inner
+            a href=admin_root_path
+              = embedded_svg ("user-icon.svg")
+        .basket-wrap
+          a.link-to-calling-cart data-reveal-id="BasketModal"
+            / class=(get_count_products > 0 ? '' : 'disabled')
+            .basket-inner
+              .basket
+                .animate-basket
+                  = embedded_svg ("cart.svg")
+              .count-wrap._cart-total-count-items-wrap
+
+          =render partial: 'partials/basket'
+=render partial: 'partials/forms/call_order'
+=render partial: 'partials/forms/basket_second_step'
+=render partial: 'partials/forms/basket_finish_step'
+=render partial: 'partials/forms/ordered_success'
